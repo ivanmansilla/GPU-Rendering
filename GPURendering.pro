@@ -42,10 +42,10 @@ HEADERS += \
     Modelling/TG/TranslateTG.h \
     Rendering/Camera.h \
     Rendering/GLWidget.h \
-    Rendering/MainWindow.h \
     library/Common.h \
     library/mat.h \
-    library/vec.h
+    library/vec.h \
+    Rendering/MainWindow.h
 
 FORMS += \
     mainwindow.ui
