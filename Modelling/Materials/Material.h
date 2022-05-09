@@ -4,8 +4,15 @@
 #include <memory>
 #include <DataSettings/Serializable.h>
 #include <vector>
+#include <iostream>
+#include <library/vec.h>
 
 using namespace std;
+using namespace Common;
+
+// Tipus de Materials
+enum MaterialType {Lambertian,Metal,Transparent};
+
 // TO DO: A canviar a la fase 1 de la practica 2
 // Classe que representa els materials d'un objecte
 class Material: public Serializable{
@@ -13,6 +20,17 @@ class Material: public Serializable{
 
 public:
     Material();
+    Material(vec3 d);
+    Material(vec3 a, vec3 d, vec3 s, float shininess);
+    Material(vec3 a, vec3 d, vec3 s, float shininess, float opacity);
+    Material(vec3 a, vec3 d, vec3 s, float shininess, float opacity,MaterialType type);
+    ~Material();
+
+    vec3 getAttenuation(const Ray& r_in, const HitInfo& rec) const = 0;
+    bool getOneScatteredRay(const Ray& r_in, const HitInfo& rec, Ray& r_out) const = 0;
+    bool getMultipleScatteredRays(const Ray& r_in, const HitInfo& rec, std::vector<Ray>& r_out) const = 0;
+    vec3 getDiffuse(vec2 point) const;
+    vec3 getColorPixel(vec2 uv) const = 0;
 
     void toGPU(shared_ptr<QGLShaderProgram> program);
     virtual void read (const QJsonObject &json);
@@ -27,6 +45,14 @@ public:
     float shininess;
     float opacity;
     float nut;
+
+private:
+
+    MaterialType type;
+
+    MaterialType getTypeFromString(String type) const;
+    String getStringFromType(MaterialType type) const;
+
 
 };
 

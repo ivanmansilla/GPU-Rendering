@@ -1,7 +1,89 @@
 #include "Modelling/Materials/Material.h"
 
+Material::Material(): Ka(1.0f), Kd(1.0f), Ks(1.0f) {
+    shininess = 1.0f;
+    nut=1.0f;
+    type=MaterialType.Lambertian;
+}
 
-Material::Material() {
+Material::~Material()
+{}
+
+Material::Material(vec3 d) {
+    Kd = d;
+    //Valors arbitrarKs. Podem decKdir canvKar-los.
+    Ka = vec3(1.0f, 1.0f, 1.0f);
+    Ks = vec3(1.0f, 1.0f, 1.0f);
+    shininess = 1.0f;
+    type=MaterialType.Lambertian;
+}
+
+Material::Material(vec3 a, vec3 d, vec3 s, float shin) {
+    //Fase 2
+    Ka = a;
+    Kd = d;
+    Ks = s;
+    shininess = shin;
+    type=MaterialType.Lambertian;
+}
+
+Material::Material(vec3 a, vec3 d, vec3 s, float shin, float opac) {
+    //Fase 2
+    Ka = a;
+    Kd = d;
+    Ks = s;
+    shininess = shin;
+    opacity = opac;
+    type=MaterialType.Lambertian;
+}
+
+Material::Material(vec3 a, vec3 d, vec3 s, float shin, float opac, MaterialType type) {
+    //Fase 2
+    Ka = a;
+    Kd = d;
+    Ks = s;
+    shininess = shin;
+    opacity = opac;
+    this->type=type;
+}
+
+
+vec3 Material::getDiffuse(vec2 point) const {
+     return getColorPixel(point);
+}
+
+vec3 Material::getColorPixel(vec2 uv) const {
+    switch (type) {
+    default: //Lambertian by default
+        return Kd;
+    }
+}
+
+vec3 Material::getAttenuation(const Ray& r_in, const HitInfo& rec) const  {
+    switch (type) {
+    default: //Lambertian by default
+        return Kd;
+    }
+}
+
+bool Material::getOneScatteredRay(const Ray& r_in, const HitInfo& rec, Ray& r_out) const  {
+    switch (type) {
+    default: //Lambertian by default
+        vec3 p0 = rec.p + FLT_EPSILON * r_in.getDirection();
+        vec3 target = p0 + rec.normal + Hitable::RandomInSphere();
+        r_out =  Ray(p0, target-rec.p);
+        return true;
+    }
+}
+bool Material::getMultipleScatteredRays(const Ray& r_in, const HitInfo& rec,  std::vector<Ray>& r_out) const  {
+    switch (type) {
+    Lambertian:
+        for (int i = 0; i < MULTIPLE_SCATTER_SAMPLES; i++) {
+            vec3 target = rec.p + rec.normal + Hitable::RandomInSphere();
+            r_out.push_back( Ray(rec.p, target-rec.p));
+        }
+        return true;
+    }
 
 }
 
@@ -46,6 +128,24 @@ void Material::read (const QJsonObject &json)
         opacity = json["opacity"].toDouble();
     if (json.contains("nut") && json["nut"].isDouble())
         nut = json["nut"].toDouble();
+    if (json.contains("type") && json["type"].isString())
+        type = getTypeFromString(json["type"]);
+}
+
+MaterialType Material::getTypeFromString(String type) const{
+   switch(type){
+   //Todo implement other cases
+    default:
+       return MaterialType.Lambertian;
+   }
+}
+
+String Material::getStringFromType(MaterialType type) const{
+   switch(type){
+   //Todo implement other cases
+    default:
+       return 'Lambertian';
+   }
 }
 
 
@@ -71,6 +171,7 @@ void Material::write(QJsonObject &json) const
     json["opacity"] = opacity;
     json["shininess"] = shininess;
     json["nut"] = nut;
+    json["type"] = getStringFromType(type);
 }
 
 //! [1]

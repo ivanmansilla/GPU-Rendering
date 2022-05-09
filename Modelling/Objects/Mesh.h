@@ -20,6 +20,7 @@ using namespace Common;
 #include <Modelling/TG/TG.h>
 #include <Modelling/Animation.h>
 #include <Modelling/Objects/Cara.h>
+#include <Modelling/Materials/Material.h>
 
 typedef vec4  point4;
 
@@ -51,10 +52,13 @@ protected:
 
     shared_ptr<QOpenGLTexture> texture;
 
+
 public:
 
     Mesh(const int npoints, QObject *parent = 0);
     Mesh(const int npoints, QString n);
+    Mesh(const int npoints, QObject *parent = 0, MaterialType type);
+    Mesh(const int npoints, QString n, MaterialType type);
     ~Mesh();
 
     void parseObjFile(const QString &fileName);
@@ -73,6 +77,7 @@ public:
 
 private:
     void initTexture();
+    Material material;
 };
 
 

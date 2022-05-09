@@ -22,6 +22,7 @@ Mesh::Mesh(int npoints, QString n) : numPoints(npoints){
     points = new point4[numPoints];
     normals= new point4[numPoints];
     colors = new point4[numPoints];
+    material = new Material();
 
     parseObjFile(n);
     make();
@@ -87,6 +88,7 @@ void Mesh::draw(){
     // TO  DO: A modificar a la fase 1 de la practica 2
     // Cal activar també les normals  a la GPU
 
+    material.toGPU(program);
     glBindVertexArray( vao );
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
