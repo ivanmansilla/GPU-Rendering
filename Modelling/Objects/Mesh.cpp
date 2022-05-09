@@ -22,7 +22,7 @@ Mesh::Mesh(int npoints, QString n) : numPoints(npoints){
     points = new point4[numPoints];
     normals= new point4[numPoints];
     colors = new point4[numPoints];
-    material = new Material();
+    material = Material();
 
     parseObjFile(n);
     make();

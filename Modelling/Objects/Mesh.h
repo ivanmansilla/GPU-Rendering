@@ -57,8 +57,6 @@ public:
 
     Mesh(const int npoints, QObject *parent = 0);
     Mesh(const int npoints, QString n);
-    Mesh(const int npoints, QObject *parent = 0, MaterialType type);
-    Mesh(const int npoints, QString n, MaterialType type);
     ~Mesh();
 
     void parseObjFile(const QString &fileName);

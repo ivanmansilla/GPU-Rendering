@@ -7,6 +7,7 @@
 #include <iostream>
 #include <library/vec.h>
 
+
 using namespace std;
 using namespace Common;
 
@@ -26,11 +27,11 @@ public:
     Material(vec3 a, vec3 d, vec3 s, float shininess, float opacity,MaterialType type);
     ~Material();
 
-    vec3 getAttenuation(const Ray& r_in, const HitInfo& rec) const = 0;
-    bool getOneScatteredRay(const Ray& r_in, const HitInfo& rec, Ray& r_out) const = 0;
-    bool getMultipleScatteredRays(const Ray& r_in, const HitInfo& rec, std::vector<Ray>& r_out) const = 0;
+    vec3 getAttenuation(/*const Ray& r_in, const HitInfo& rec*/) const;
+    bool getOneScatteredRay(/*const Ray& r_in, const HitInfo& rec, Ray& r_out*/) const;
+    bool getMultipleScatteredRays(/*const Ray& r_in, const HitInfo& rec, std::vector<Ray>& r_out*/) const;
     vec3 getDiffuse(vec2 point) const;
-    vec3 getColorPixel(vec2 uv) const = 0;
+    vec3 getColorPixel(vec2 uv) const;
 
     void toGPU(shared_ptr<QGLShaderProgram> program);
     virtual void read (const QJsonObject &json);
@@ -50,8 +51,8 @@ private:
 
     MaterialType type;
 
-    MaterialType getTypeFromString(String type) const;
-    String getStringFromType(MaterialType type) const;
+    MaterialType getTypeFromString(QString type) const;
+    QString getStringFromType(MaterialType type) const;
 
 
 };
