@@ -1,5 +1,7 @@
 #include "Factories/Builder.h"
 
+#include "AbstractFactoryScenes.h"
+
 Builder::Builder(GLWidget *glWid)
 {
     glWidget = glWid;
@@ -11,12 +13,12 @@ void Builder::newObjFromFile()
 {
     QString fileName = QFileDialog::getOpenFileName();
     if (!fileName.isNull()) {
-            // OJO! El primer paràmetre de la constructora de l'Object és el número de punts del model.
-            // Si l'objecte té més punts en el .bj, cal canviar aquest valor
-            auto obj = make_shared<Mesh>(100000, fileName);
-            scene->addObject(obj);
-            scene->camera->actualitzaCamera(scene->capsaMinima);
-            emit newObj(obj);
+        // OJO! El primer paràmetre de la constructora de l'Object és el número de punts del model.
+        // Si l'objecte té més punts en el .bj, cal canviar aquest valor
+        auto obj = make_shared<Mesh>(100000, fileName);
+        scene->addObject(obj);
+        scene->camera->actualitzaCamera(scene->capsaMinima);
+        emit newObj(obj);
     }
 }
 
@@ -29,7 +31,18 @@ void Builder::newVirtualScene() {
     // Usa la teva SceneFactoryVirtual
     // per a construir l'escena tal i com feies a la practica 1
 
-     emit newScene(scene);
+    QString fileName = QFileDialog::getOpenFileName();
+    Serializable::SaveFormat format = Serializable::Json;
+
+    shared_ptr<Scene> scene;
+    if (!fileName.isNull()) {
+        auto factory = AbstractFactoryScenes::getInstance().getSceneFactory(format, fileName);
+        // Creem l'escena
+        scene = factory->createScene(format, fileName);
+
+    }
+
+    emit newScene(scene);
 }
 
 
@@ -41,6 +54,6 @@ void Builder::newDataScene()
     // Utilitza la teva SceneFactoryData per a llegir el fitxer
     // i crear l'escena corresponent.
 
-     emit newScene(scene);
+    emit newScene(scene);
 }
 

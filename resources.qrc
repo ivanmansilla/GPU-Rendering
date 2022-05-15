@@ -2,5 +2,8 @@
     <qresource prefix="/">
         <file>resources/fshader1.glsl</file>
         <file>resources/vshader1.glsl</file>
+        <file>resources/cube.obj</file>
+        <file>resources/meshExample.json</file>
+        <file>resources/teapot2.obj</file>
     </qresource>
 </RCC>

@@ -10,7 +10,10 @@ CONFIG += c++11
 
 SOURCES += \
     DataSettings/Serializable.cpp \
+    Factories/AbstractFactoryScenes.cpp \
     Factories/Builder.cpp \
+    Factories/SceneFactory.cpp \
+    Factories/SceneFactoryVirtual.cpp \
     Modelling/Animation.cpp \
     Modelling/Lights/Light.cpp \
     Modelling/Materials/ColorMapStatic.cpp \
@@ -28,7 +31,10 @@ SOURCES += \
 
 HEADERS += \
     DataSettings/Serializable.h \
+    Factories/AbstractFactoryScenes.h \
     Factories/Builder.h \
+    Factories/SceneFactory.h \
+    Factories/SceneFactoryVirtual.h \
     IncludeWin32/GL/glut.h \
     Modelling/Animation.h \
     Modelling/Lights/Light.h \
