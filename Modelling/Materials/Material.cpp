@@ -89,6 +89,22 @@ bool Material::getMultipleScatteredRays(/*const Ray& r_in, const HitInfo& rec,  
  * @param program
  */
 void Material::toGPU(shared_ptr<QGLShaderProgram> program){
+    qDebug() << "Material toGPU\n";
+
+    attributesMaterial.Ka=program.uniformLocation("material.ka");
+    attributesMaterial.Kd=program.uniformLocation("material.kd");
+    attributesMaterial.Ks=program.uniformLocation("material.ks");
+    attributesMaterial.shininess=program.uniformLocation("material.shininess");
+    attributesMaterial.opacity=program.uniformLocation("material.opacity");
+    attributesMaterial.nut=program.uniformLocation("material.nut");
+
+    glUniform3fv(attributesMaterial.Ka,1,this->Ka);
+    glUniform3fv(attributesMaterial.Kd,1,this->Kd);
+    glUniform3fv(attributesMaterial.Ks,1,this->Ks);
+    glUniform3fv(attributesMaterial.shininess,1,this->shininess);
+    glUniform3fv(attributesMaterial.opacity,1,this->opacity);
+    glUniform3fv(attributesMaterial.nut,1,this->nut);
+
 }
 
 MaterialType Material::getTypeFromString(QString type) const{

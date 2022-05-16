@@ -55,5 +55,15 @@ private:
     QString getStringFromType(MaterialType type) const;
 
 
+    struct{
+        GLuint Ka;
+        GLuint Kd;
+        GLuint Ks;
+        GLuint shininess;
+        GLuint opacity;
+        GLuint nut;
+
+    }attributesMaterial;
+
 };
 
