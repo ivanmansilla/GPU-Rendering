@@ -1,6 +1,9 @@
 #pragma once
 
 #include <library/vec.h>
+#include <library/Common.h>
+
+#include <QGLShaderProgram>
 using namespace Common;
 
 // Tipus de Lights
@@ -30,5 +33,9 @@ class Light {
 
         LightType getTipusLight() const;
         void setTipusLight(const LightType &value);
+    private:
+        vec3 ia, id, is, coef;
+        vec4 lightPosition;
+        LightType tipus;
 };
 

@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <library/Common.h>
+using namespace Common;
 
 #include <QGLShaderProgram>
 
@@ -12,7 +13,7 @@
 #include <memory>
 
 using namespace std;
-using namespace Common;
+
 
 #define PI 3.141593
 

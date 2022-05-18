@@ -4,21 +4,23 @@
 #include <iostream>
 #include <stdlib.h>
 
+
+#include <library/Common.h>
+using namespace Common;
+
 #include <list>
 #include <vector>
 #include <string>
 #include <stdio.h>
 
 #include <library/vec.h>
-#include <library/Common.h>
-
 
 #include <Modelling/Objects/Mesh.h>
 #include <Modelling/Lights/Light.h>
 #include <Rendering/Camera.h>
 
+
 using namespace std;
-using namespace Common;
 
 // Scene: contains all objects, lights to visualize the scene
 // the viewer is placed in the z+ axis
@@ -31,6 +33,7 @@ public:
     vector<shared_ptr<Light>>  lights;
 
     vec3    lightAmbientGlobal;
+
     shared_ptr<Camera> camera;
     // Capsa contenedora de l'escena
     Capsa3D capsaMinima;
@@ -53,6 +56,9 @@ public:
 
     void calculCapsaMinCont3DEscena();
     void update(int nframe);
+private:
+    vec4 vectorProva;
+
 
 };
 
