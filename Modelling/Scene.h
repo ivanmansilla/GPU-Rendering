@@ -15,6 +15,8 @@ using namespace Common;
 
 #include <library/vec.h>
 
+#include <Modelling/TG/TranslateTG.h>
+#include <Modelling/TG/ScaleTG.h>
 #include <Modelling/Objects/Mesh.h>
 #include <Modelling/Lights/Light.h>
 #include <Rendering/Camera.h>

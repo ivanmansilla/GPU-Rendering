@@ -54,6 +54,16 @@ void Builder::newDataScene()
     // Utilitza la teva SceneFactoryData per a llegir el fitxer
     // i crear l'escena corresponent.
 
+    QString fileName = QFileDialog::getOpenFileName();
+    Serializable::SaveFormat format = Serializable::Json;
+
+    shared_ptr<Scene> scene;
+    if (!fileName.isNull()) {
+        auto factory = AbstractFactoryScenes::getInstance().getSceneFactory(format, fileName);
+        // Creem l'escena
+        scene = factory->createScene(format, fileName);
+
+    }
     emit newScene(scene);
 }
 
