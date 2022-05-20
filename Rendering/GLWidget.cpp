@@ -185,7 +185,9 @@ void GLWidget::saveAnimation() {
 
 void GLWidget::activaDepthShader() {
     //A implementar a la fase 1 de la practica 2
-    qDebug()<<"Estic a Toon";
+    initShader("://resources/vshaderDepthShading.glsl", "://resources/fshaderDepthShading.glsl");
+    updateShader();
+    qDebug()<<"Estic a Depth Shading";
 }
 
 void GLWidget::activaGouraudShader() {
@@ -230,9 +232,8 @@ void GLWidget::activaTransparency() {
 
 //Metode  per canviar de shaders.
 void GLWidget::updateShader(){
-
-
-;}
+    updateGL();
+}
 
 //Metode per canviar de shaders de textures
 void GLWidget::updateShaderTexture(){
