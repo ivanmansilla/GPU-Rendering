@@ -23,6 +23,7 @@ SOURCES += \
     Modelling/Materials/Material.cpp \
     Modelling/Objects/Cara.cpp \
     Modelling/Objects/Mesh.cpp \
+    Modelling/Objects/Plane.cpp \
     Modelling/Scene.cpp \
     Modelling/TG/ScaleTG.cpp \
     Modelling/TG/TG.cpp \
@@ -51,6 +52,7 @@ HEADERS += \
     Modelling/Materials/Material.h \
     Modelling/Objects/Cara.h \
     Modelling/Objects/Mesh.h \
+    Modelling/Objects/Plane.h \
     Modelling/Scene.h \
     Modelling/TG/ScaleTG.h \
     Modelling/TG/TG.h \

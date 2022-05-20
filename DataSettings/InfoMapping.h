@@ -12,7 +12,6 @@
 #include <QStringList>
 
 #include <vector>
-#include "glm/glm.hpp"
 #include "Modelling/Scene.h"
 #include "Modelling/Materials/ColorMapStatic.h"
 #include "PropertyInfo.h"

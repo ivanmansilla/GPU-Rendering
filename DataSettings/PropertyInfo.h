@@ -2,8 +2,6 @@
 #define PROPERTYINFO_H
 
 
-#include "glm/glm.hpp"
-
 #include "Serializable.h"
 #include "Modelling/Materials/ColorMapStatic.h"
 #include <Modelling/Objects/Mesh.h>
