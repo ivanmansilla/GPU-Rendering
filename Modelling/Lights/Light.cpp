@@ -5,11 +5,11 @@
  * @param t
  */
 Light::Light(LightType t) {
-    ia = vec3(0,0,0);
-    id = vec3(0,0,0);
-    is = vec3(0,0,0);
-    coef = vec3(0,0,0);
-    lightPosition = vec4(0,0,0,0);
+    ia = vec3(0,1,0);
+    id = vec3(1,1,1);
+    is = vec3(0,1,0);
+    coef = vec3(0,0,1);
+    lightPosition = vec4(-25,25,25,1.0);
     tipus = t;
 }
 

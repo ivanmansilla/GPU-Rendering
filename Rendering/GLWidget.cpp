@@ -39,17 +39,8 @@ void GLWidget::initializeGL() {
     initShadersGPU();
 
     // Creacio d'una Light per a poder modificar el seus valors amb la interficie
-    //Per ara es modifiquen aqui els valors falta que es modifiquin desde l'interficie
     auto l  = make_shared<Light>(Puntual);
-    auto l2  = make_shared<Light>(Puntual);
-    auto l3  = make_shared<Light>(Puntual);
     scene->addLight(l);
-    scene->addLight(l2);
-    scene->addLight(l3);
-
-    l->setId(vec3(1,0,0));
-    l2->setId(vec3(0,1,0));
-    l3->setId(vec3(0,0,1));
 
     scene->lightsToGPU(program);
 
@@ -197,6 +188,8 @@ void GLWidget::activaGouraudShader() {
 }
 void GLWidget::activaPhongShader() {
     //Opcional: A implementar a la fase 1 de la practica 2
+    initShader("://resources/vshaderPhong.glsl", "://resources/fshaderPhong.glsl");
+    updateShader();
     qDebug()<<"Estic a Phong";
 
 }
@@ -231,7 +224,13 @@ void GLWidget::activaTransparency() {
 }
 
 //Metode  per canviar de shaders.
-void GLWidget::updateShader(){
+void GLWidget::updateShader(){ 
+
+    scene->lightsToGPU(program);
+    scene->camera->toGPU(program);
+    scene->toGPU(program);
+    scene->setAmbientGlobalToGPU(program);
+
     updateGL();
 }
 
@@ -289,6 +288,9 @@ void GLWidget::setLighting(const QVector3D &lightPos, const QVector3D &Ia, const
     scene->lights[0]->setId(intensityD);
     scene->lights[0]->setIs(intensityS);
     scene->lights[0]->setLightPosition(lightPosition);
+
+    scene->lightsToGPU(program);
+
     updateGL();
 }
 

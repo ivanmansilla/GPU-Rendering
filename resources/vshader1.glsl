@@ -12,8 +12,19 @@ struct StLlums
     vec4 lightPosition;
 };
 
+struct StMaterial
+{
+    vec3 Ka;
+    vec3 Kd;
+    vec3 Ks;
+    float shininess;
+    float opacity;
+    float nut;
+};
+
 uniform vec3 lightAmbientGlobal;
 uniform StLlums conjunt[5];
+uniform StMaterial material;
 uniform mat4 model_view;
 uniform mat4 projection;
 
@@ -24,8 +35,6 @@ void main()
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
 
-    // Comprovacio que funcionen les llums
-    //color = (vec4(conjunt[0].id, 1.0)+vec4(conjunt[1].id, 1.0)+vec4(conjunt[2].id, 1.0));
-    // Nose que posar perque les llums influeixin al color (supos que es el dels shaders)
-    color = vColor;
+    color = vec4(conjunt[0].id, 1.0);
+    //color = vColor;
 }

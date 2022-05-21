@@ -8,5 +8,7 @@
         <file>resources/f16.obj</file>
         <file>resources/fshaderDepthShading.glsl</file>
         <file>resources/vshaderDepthShading.glsl</file>
+        <file>resources/fshaderPhong.glsl</file>
+        <file>resources/vshaderPhong.glsl</file>
     </qresource>
 </RCC>

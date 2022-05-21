@@ -1,15 +1,18 @@
 #pragma once
 
-#include <QGLShaderProgram>
+#include <iostream>
 #include <memory>
+
+#include <library/Common.h>
+using namespace Common;
+
+#include <QGLShaderProgram>
 #include <DataSettings/Serializable.h>
 #include <vector>
-#include <iostream>
 #include <library/vec.h>
 
-
 using namespace std;
-using namespace Common;
+
 
 // Tipus de Materials
 enum MaterialType {Lambertian,Metal,Transparent};
