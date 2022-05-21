@@ -2,7 +2,8 @@
 
 TranslateTG::TranslateTG(vec3 trasl): traslation(trasl)
 {
-    //Find translate function in mat.h
+    //matTG = Translate(mat4(1.0f), traslation);
+    matTG = Translate(traslation);
 }
 
 TranslateTG::~TranslateTG()

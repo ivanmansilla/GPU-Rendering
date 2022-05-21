@@ -5,5 +5,8 @@
         <file>resources/cube.obj</file>
         <file>resources/meshExample.json</file>
         <file>resources/teapot2.obj</file>
+        <file>resources/f16.obj</file>
+        <file>resources/fshaderDepthShading.glsl</file>
+        <file>resources/vshaderDepthShading.glsl</file>
     </qresource>
 </RCC>

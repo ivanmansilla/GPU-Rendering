@@ -1,6 +1,7 @@
 #ifndef TRANSLATETG_H
 #define TRANSLATETG_H
 
+#include <library/Common.h>
 #include "TG.h"
 
 class TranslateTG : public TG

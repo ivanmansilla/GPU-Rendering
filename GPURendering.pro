@@ -9,10 +9,13 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    DataSettings/InfoMapping.cpp \
+    DataSettings/PropertyInfo.cpp \
     DataSettings/Serializable.cpp \
     Factories/AbstractFactoryScenes.cpp \
     Factories/Builder.cpp \
     Factories/SceneFactory.cpp \
+    Factories/SceneFactoryData.cpp \
     Factories/SceneFactoryVirtual.cpp \
     Modelling/Animation.cpp \
     Modelling/Lights/Light.cpp \
@@ -20,7 +23,9 @@ SOURCES += \
     Modelling/Materials/Material.cpp \
     Modelling/Objects/Cara.cpp \
     Modelling/Objects/Mesh.cpp \
+    Modelling/Objects/Plane.cpp \
     Modelling/Scene.cpp \
+    Modelling/TG/ScaleTG.cpp \
     Modelling/TG/TG.cpp \
     Modelling/TG/TranslateTG.cpp \
     Rendering/Camera.cpp \
@@ -30,10 +35,14 @@ SOURCES += \
     Rendering/MainWindow.cpp
 
 HEADERS += \
+    ../p2-gpurendering-f02 (1)/Factories/SceneFactoryData.h \
+    DataSettings/InfoMapping.h \
+    DataSettings/PropertyInfo.h \
     DataSettings/Serializable.h \
     Factories/AbstractFactoryScenes.h \
     Factories/Builder.h \
     Factories/SceneFactory.h \
+    Factories/SceneFactoryData.h \
     Factories/SceneFactoryVirtual.h \
     IncludeWin32/GL/glut.h \
     Modelling/Animation.h \
@@ -43,7 +52,9 @@ HEADERS += \
     Modelling/Materials/Material.h \
     Modelling/Objects/Cara.h \
     Modelling/Objects/Mesh.h \
+    Modelling/Objects/Plane.h \
     Modelling/Scene.h \
+    Modelling/TG/ScaleTG.h \
     Modelling/TG/TG.h \
     Modelling/TG/TranslateTG.h \
     Rendering/Camera.h \

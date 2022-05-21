@@ -31,6 +31,11 @@ void Scene::addObject(shared_ptr<Mesh> obj) {
     calculCapsaMinCont3DEscena();
 }
 
+void Scene::addPlane(shared_ptr<Plane> obj) {
+    plane = obj;
+    calculCapsaMinCont3DEscena();
+}
+
 /**
  * @brief Scene::toGPU
  */
@@ -38,6 +43,7 @@ void Scene::toGPU(shared_ptr<QGLShaderProgram> p) {
     for(unsigned int i=0; i < objects.size(); i++){
         objects.at(i)->toGPU(p);
     }
+    plane->toGPU(p);
 }
 
 /**
@@ -47,6 +53,7 @@ void Scene::draw() {
     for(unsigned int i=0; i < objects.size(); i++){
         objects.at(i)->draw();
     }
+    plane->draw();
 }
 
 
@@ -76,6 +83,30 @@ void Scene::setLightActual(shared_ptr<Light> l){
  */
 void Scene::lightsToGPU(shared_ptr<QGLShaderProgram> program){
 // TO DO: A implementar a la fase 1 de la practica 2
+    struct gl_IdLlums
+    {
+        GLuint ia;
+        GLuint id;
+        GLuint is;
+        GLuint coef;
+        GLuint lightPosition;
+    };
+
+    gl_IdLlums gl_IdVect[5];
+
+    for(unsigned int i=0; i < lights.size(); i++){
+        gl_IdVect[i].ia = program->uniformLocation(QString("conjunt[%1].ia").arg(i));
+        gl_IdVect[i].id = program->uniformLocation(QString("conjunt[%1].id").arg(i));
+        gl_IdVect[i].is = program->uniformLocation(QString("conjunt[%1].is").arg(i));
+        gl_IdVect[i].coef = program->uniformLocation(QString("conjunt[%1].coef").arg(i));
+        gl_IdVect[i].lightPosition = program->uniformLocation(QString("conjunt[%1].lightPosition").arg(i));
+
+        glUniform3fv(gl_IdVect[i].ia, 1, lights[i]->getIa());
+        glUniform3fv(gl_IdVect[i].id, 1, lights[i]->getId());
+        glUniform3fv(gl_IdVect[i].is, 1, lights[i]->getIs());
+        glUniform3fv(gl_IdVect[i].coef, 1, lights[i]->getCoeficients());
+        glUniform4fv(gl_IdVect[i].lightPosition, 1, lights[i]->getLightPosition());
+    }
 
 }
 
@@ -89,7 +120,13 @@ void Scene::addLight(shared_ptr<Light> l) {
  */
 void Scene::setAmbientGlobalToGPU(shared_ptr<QGLShaderProgram> program){
     // TO DO: A implementar a la fase 1 de la practica 2
-
+    GLuint ambientGlobalID;
+    for(unsigned int i=0; i < lights.size(); i++){
+        ambientGlobalID = program->uniformLocation(QString("lightAmbientGlobal").arg(i));
+    }
+    for(unsigned int i=0; i < lights.size(); i++){
+        glUniform3fv(ambientGlobalID, 1, lightAmbientGlobal);
+}
 }
 
 /**
