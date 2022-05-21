@@ -4,7 +4,7 @@
 #include <library/Common.h>
 #include <library/vec.h>
 #include <library/mat.h>
-
+using namespace std;
 #include <QGLShaderProgram>
 
 #include <stdio.h>
@@ -22,7 +22,7 @@ public:
     Plane(int an, int al, int profu, GLfloat x0, GLfloat y0, GLfloat z0);
     ~Plane();
     void make();
-    void toGPU(QGLShaderProgram *program);
+    void toGPU(shared_ptr<QGLShaderProgram> program);
     void draw();
     void aplicaTG(mat4 m);
 

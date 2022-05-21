@@ -14,20 +14,13 @@ Plane::Plane()
     vertices[1] = point4( -0.5,  0.5,  0.5, 1.0 );
     vertices[2] = point4(  0.5,  0.5,  0.5, 1.0 );
     vertices[3] = point4(  0.5, -0.5,  0.5, 1.0 );
-    vertices[4] = point4( -0.5, -0.5, -0.5, 1.0 );
-    vertices[5] = point4( -0.5,  0.5, -0.5, 1.0 );
-    vertices[6] = point4(  0.5,  0.5, -0.5, 1.0 );
-    vertices[7] = point4(  0.5, -0.5, -0.5, 1.0 );
+
 
     // RGBA colors
     vertex_colors[0] =    color4( 0.0, 0.0, 0.0, 1.0 );  // black
     vertex_colors[1] =    color4( 1.0, 0.0, 0.0, 1.0 );  // red
     vertex_colors[2] =    color4( 1.0, 1.0, 0.0, 1.0 );  // yellow
     vertex_colors[3] =    color4( 0.0, 1.0, 0.0, 1.0 );  // green
-    vertex_colors[4] =    color4( 0.0, 0.0, 1.0, 1.0 );  // blue
-    vertex_colors[5] =    color4( 1.0, 0.0, 1.0, 1.0 );  // magenta
-    vertex_colors[6] =    color4( 1.0, 1.0, 1.0, 1.0 );  // white
-    vertex_colors[7] =    color4( 0.0, 1.0, 1.0, 1.0 );  // cyan
 }
 
 // Constructora amb tots els parametres
@@ -77,7 +70,7 @@ void Plane::make()
 }
 
 // Carrega del cub a la GPU
-void Plane::toGPU(QGLShaderProgram *program){
+void Plane::toGPU(shared_ptr<QGLShaderProgram> program){
 
     qDebug() << "Passo les dades del cub a la GPU\n";
 

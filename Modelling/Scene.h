@@ -18,6 +18,7 @@ using namespace Common;
 #include <Modelling/TG/TranslateTG.h>
 #include <Modelling/TG/ScaleTG.h>
 #include <Modelling/Objects/Mesh.h>
+#include <Modelling/Objects/Plane.h>
 #include <Modelling/Lights/Light.h>
 #include <Rendering/Camera.h>
 
@@ -37,6 +38,7 @@ public:
     vec3    lightAmbientGlobal;
 
     shared_ptr<Camera> camera;
+    shared_ptr<Plane> plane;
     // Capsa contenedora de l'escena
     Capsa3D capsaMinima;
 
@@ -44,6 +46,7 @@ public:
     ~Scene();
 
     void   addObject(shared_ptr<Mesh> obj);
+    void   addPlane(shared_ptr<Plane> obj);
     void   addLight(shared_ptr<Light> l);
     shared_ptr<Light> getLightActual();
     void   setLightActual(shared_ptr<Light> l);

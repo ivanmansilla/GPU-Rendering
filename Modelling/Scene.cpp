@@ -31,6 +31,11 @@ void Scene::addObject(shared_ptr<Mesh> obj) {
     calculCapsaMinCont3DEscena();
 }
 
+void Scene::addPlane(shared_ptr<Plane> obj) {
+    plane = obj;
+    calculCapsaMinCont3DEscena();
+}
+
 /**
  * @brief Scene::toGPU
  */
@@ -38,6 +43,7 @@ void Scene::toGPU(shared_ptr<QGLShaderProgram> p) {
     for(unsigned int i=0; i < objects.size(); i++){
         objects.at(i)->toGPU(p);
     }
+    plane->toGPU(p);
 }
 
 /**
@@ -47,6 +53,7 @@ void Scene::draw() {
     for(unsigned int i=0; i < objects.size(); i++){
         objects.at(i)->draw();
     }
+    plane->draw();
 }
 
 

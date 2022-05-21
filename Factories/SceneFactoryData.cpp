@@ -81,13 +81,14 @@ void SceneFactoryData::read(const QJsonObject &json)
 
     if (json.contains("base") && json["base"].isObject()) {
         QJsonObject jbase = json["base"].toObject();
-        shared_ptr<Mesh> o;
+        shared_ptr<Plane> o;
         if (jbase.contains("type") && jbase["type"].isString()) {
             QString objStr = jbase["type"].toString().toUpper();
             //o = ObjectFactory::getInstance().createObject(ObjectFactory::getInstance().getObjectType(objStr));
             //o->read(jbase);
+            o = make_shared<Plane>(1,1,1,1,1,1);
             // Quan tinguem el fittedplane crearem un fittedplane igual que creem la mesh, y sera el baseObj
-            //scene->baseObj = o;
+            scene->addPlane(o);
         }
     }
     mapping = make_shared<InfoMapping>();
