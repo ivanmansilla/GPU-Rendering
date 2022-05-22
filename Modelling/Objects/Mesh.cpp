@@ -11,6 +11,7 @@ Mesh::Mesh(int npoints, QObject *parent) : QObject(parent){
     points = new point4[numPoints];
     normals= new point4[numPoints];
     colors = new point4[numPoints];
+
  }
 
 /**
@@ -159,6 +160,7 @@ void Mesh::make(){
             Index++;
         }
     }
+    initTexture();
 }
 
 
@@ -166,6 +168,7 @@ void Mesh::make(){
 
 void Mesh::setTexture(shared_ptr<QOpenGLTexture> t){
    texture = t;
+   initTexture();
 }
 
 /**
@@ -177,10 +180,19 @@ void Mesh::initTexture()
     // Cal inicialitzar la textura de l'objecte: veure l'exemple del CubGPUTextura
     qDebug() << "Initializing textures...";
 
+    if(texture== nullptr){
+        texture = new QOpenGLTexture(QImage("://resources/textures/bricks.png"));
+    }
+
     glActiveTexture(GL_TEXTURE0);
 
     texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
     texture->setMinificationFilter(QOpenGLTexture::Linear);
+
+    texture->bind(0);
+
+    texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
+    texture->setMagnificationFilter(QOpenGLTexture::Linear);
 
     texture->bind(0);
 
@@ -301,7 +313,8 @@ void Mesh::aplicaTG(shared_ptr<TG> tg){
 
 
 void Mesh::drawTexture(){
-    program->setUniformValue("_texture",0);
+    initTexture();
+    program->setUniformValue("textMap",0);
 }
 
 
