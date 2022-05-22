@@ -42,6 +42,16 @@ void GLWidget::initializeGL() {
     auto l  = make_shared<Light>(Puntual);
     scene->addLight(l);
 
+    // Comprovacio que funciona més d'una llum
+    /*auto l2  = make_shared<Light>(Puntual);
+    auto l3  = make_shared<Light>(Puntual);
+
+    scene->addLight(l2);
+    scene->addLight(l3);
+
+    l2->setId(vec3(0, 0.3, 0));
+    l3->setId(vec3(0,0,0.3));
+    */
     scene->lightsToGPU(program);
 
     scene->camera->init(this->size().width(), this->size().height(), scene->capsaMinima);

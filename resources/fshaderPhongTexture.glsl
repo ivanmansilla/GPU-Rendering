@@ -36,7 +36,7 @@ void main()
 {
     vec4 N = normalize(normal);
     vec4 L = normalize(conjunt[0].lightPosition - v_position);
-    vec4 colorTexture = vec4(texture(textMap,v_texcoord).rgb, 1.0);
+    vec3 colorTexture = texture(textMap,v_texcoord).rgb;
 
     float lambertian = max(dot(N, L), 0.0);
     float specular = 0.0;
@@ -46,7 +46,7 @@ void main()
         float angleSpec = max(dot(R, V), 0.0);
         specular = pow(angleSpec, material.shininess);
     }
-    vec4 diffuse=vec4(vec3(0.25 * material.kd * lambertian * conjunt[0].id),1.0f) + (colorTexture*0.75);
+    vec3 diffuse=vec3(0.25 * material.kd * lambertian * conjunt[0].id) + (colorTexture*0.75);
 
     colorOut = vec4(material.ka * conjunt[0].ia +
             diffuse +

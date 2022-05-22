@@ -35,6 +35,11 @@ void main()
     gl_Position = projection*model_view*vPosition;
     gl_Position = gl_Position/gl_Position.w;
 
-    color = vec4(conjunt[0].id, 1.0);
-    //color = vColor;
+    // Comprovacio que la llum es modificable desde interficie
+    //color = vec4(conjunt[0].id, 1.0);
+
+    // Comprovacio que funciona més d'una llum (descomentar les 2 llums de initGL a GLWidget)
+    //color = vec4(conjunt[0].id + conjunt[1].id + conjunt[2].id, 1.0);
+
+    color = vColor;
 }
