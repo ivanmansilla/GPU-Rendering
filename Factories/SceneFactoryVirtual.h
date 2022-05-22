@@ -19,10 +19,6 @@ public:
     bool load(Serializable::SaveFormat saveFormat, QString fileName);
     bool save(Serializable::SaveFormat saveFormat, QString fileName) const;
 
-
-private:
-    shared_ptr<Mesh> obj;
-    shared_ptr<Animation> anim;
 };
 
 #endif // SCENEFACTORYVIRTUAL_H
