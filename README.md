@@ -7,7 +7,9 @@ Segona pràctica de GiVD 2021-22
     
 **Abstract**
 
-*(NOTA: Petit resum del què heu fet, no més de 200 paraules)*
+En aquest pràctica hem fet primerament la migració de les dades reals i virtuals traspasant les classes corresponents a la creació d'objectes, i lectura de fitxers. Mentres feiem aquesta feina, a l'hora també creàvem les llums i materials per separat, comprovant que funcionés de manera correcte. Un cop tot funcional ho hem juntat creant les llums i materials dins de les classes que creen les escenes virtuals i reals. 
+
+Dit això, hem passat a crear els shaders demanats comprovant que funcionen tant per la lectura d'objectes com d'escenes, passant les dades entre CPU i GPU i activant-los en temps d'execució. I per finalitzar, hem implementat les textures pels objectes llegint els seus téxels i mostrant-los en el propi objecte.
 
 **Features**
 
@@ -15,29 +17,29 @@ Segona pràctica de GiVD 2021-22
 
 - Fase 1
     - Adaptació a la lectura de fitxers de dades
-        - [ ] Objectes
-        - [ ] Escenes virtuals
-        - [ ] Escenes de dades Reals 
+        - [X] Objectes
+        - [X] Escenes virtuals - Jordi Bujaldon
+        - [X] Escenes de dades Reals - Ivan Mansilla
     - Material
     - Light
-        - [ ] Puntual
+        - [X] Puntual - Lluc Slatosch
         - [ ] Direccional
         - [ ] Spotlight
-        - [ ] Ambient Global
+        - [X] Ambient Global - Lluc Slatosch
     - Shading
-        - [ ] Depth
-        - [ ] Phong
-        - [ ] Gouraud
-        - [ ] Toon-shading
+        - [X] Depth - Jordi Bujaldon
+        - [X] Phong - Jordi Bujaldon
+        - [X] Gouraud - luc Slatosch
+        - [X] Toon-shading - Lluc Slatosch
     - Textures
-        - [ ] Textura com material en un objecte
+        - [X] Textura com material en un objecte -  Miriam Martínez
         - [ ] Textura al pla base
         
 
 - Fase 2 
     - [ ] Èmfasi de siluetes
     - [ ] Mapping indirecte de textures
-    - [ ] Animacions amb dades temporals
+    - [X] Animacions amb dades temporals - Miriam Martinez
     - [ ] Normal mapping
     - [ ] Entorn amb textures
     - [ ] Reflexions
@@ -52,6 +54,17 @@ Segona pràctica de GiVD 2021-22
 **Memòria**
 
 *(NOTA: Explicació dels diferents punts que heu desenvolupat detallant les estratègies que heu fet servir)*
+ESCENES VIRTUALS:
+En aquesta part, primer hem creat la classe AbstractFactoryScenes encarregada de crear els dos tipus d'escenes que tenim, en aquest cas la virtual. A més, hem implementat el mètode que crea l'escena (createScene). Dins d'aquest mètode el que fem es llegir l'escena passada pel fitxer .json creant els objectes i els materials demanats. Un cop l'escena s'ha creat, li hem afegit una llum puntual per donar-li la il·luminació necessaria, i seguidament hem emitit un senyal passant-li la nova escena de manera que s'actualitzarà l'escena amb les propietats de la nova.
+
+ESCENES DE DADES REALS:
+
+LLUMS:
+
+SHADING:
+Primerament hem implementat el Depth Shading. Aquest shader només necessita la distància del vèrtex a la càmera, i per això hem fet servir el gl_FragCoord.z, que és la distància demanada. Per a que es veiés en intensitats segons la distància, hem hagut de calcular la intensitat del color segons la distància fent que aquest sigués el color del píxel.
+Després hem calculat el Gouraud Shading. En aquest cas havíem de calcular les normals dels vèrtexs per més tard calcular el color. En la lectura dels objectes, hem llegit els vèrtexs i normals passant-los directament al vèrtex shader. Dins del vèrtex shader 
+TEXTURES:
 
 **Screenshots**
 
