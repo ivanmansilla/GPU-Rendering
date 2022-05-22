@@ -197,6 +197,8 @@ void GLWidget::activaPhongShader() {
 }
 void GLWidget::activaToonShader() {
     //A implementar a la fase 1 de la practica 2
+    initShader("://resources/vshaderToon.glsl", "://resources/fshaderToon.glsl");
+    updateShader();
     qDebug()<<"Estic a Toon";
 }
 
