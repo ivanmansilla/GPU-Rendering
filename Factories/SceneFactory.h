@@ -20,6 +20,8 @@ public:
     SceneFactory() {};
     virtual ~SceneFactory() {};
 
+    virtual void oneSphere(Scene* s) const 0;
+
     virtual shared_ptr<Scene> createScene(Serializable::SaveFormat saveFormat, QString fileName) = 0;
 
     static SCENE_TYPES getSceneFactoryType(QString name);

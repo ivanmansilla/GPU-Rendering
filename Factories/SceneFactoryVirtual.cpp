@@ -100,3 +100,20 @@ void SceneFactoryVirtual::print(int indentation) const {
             // scene->objects[i]->print(2);
         }
 }
+
+void SceneFactoryVirtual::oneSphere(Scene *s) const{
+    //animation
+
+//    QString s1("://resources/models/sphere1.obj");
+//    shared_ptr<Mesh> obj=make_shared<Mesh>(100000,s1);
+
+//    shared_ptr<Animation>anim=make_shared<Animation>();
+//    anim->transf=make_shared<TranslateTG>(vec3(0.2));
+//    obj->addAnimation(anim);
+
+//    s->addObject(obj);
+
+    //animation
+
+}
+
