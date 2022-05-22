@@ -72,21 +72,27 @@ TEXTURES:
 **Screenshots**
 
 Jupiter:
+
 ![jupiter](https://user-images.githubusercontent.com/32061294/169720129-978c1f2a-82c1-4019-a567-92e970c7bc9c.png)
 
 Textures:
+
 ![bricks](https://user-images.githubusercontent.com/32061294/169720166-a5f58681-f79b-49f5-bb9a-e22cfbc4cb48.png)
 
 Blinn Phong:
+
 ![phong](https://user-images.githubusercontent.com/32061294/169720172-c3ee132c-a784-41e0-9634-4bb97c3bd6f6.png)
 
 Toon shading:
+
 ![toon](https://user-images.githubusercontent.com/32061294/169720179-c2274453-542b-4831-85d5-e52eb2ce5e0e.png)
 
 Depth shading:
+
 ![depth-shading](https://user-images.githubusercontent.com/32061294/169720183-ef3d46fe-e4df-4431-a334-cdbaeccd87f8.png)
 
 Gouraud:
+
 ![gouraud-escena-virtual](https://user-images.githubusercontent.com/32061294/169720202-ef21ce48-1298-49f5-9647-3ecf797f73fc.png)
 
 
