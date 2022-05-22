@@ -241,6 +241,10 @@ void GLWidget::updateShader(){
 //Metode per canviar de shaders de textures
 void GLWidget::updateShaderTexture(){
     //A implementar a la fase 1 de la practica 2
+    scene->toGPU(program);
+    scene->camera->toGPU(program);
+
+    updateGL();
 
 }
 
