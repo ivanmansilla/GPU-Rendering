@@ -46,8 +46,10 @@ void main()
         float angleSpec = max(dot(R, V), 0.0);
         specular = pow(angleSpec, material.shininess);
     }
+    vec4 diffuse=vec4(material.kd * lambertian * conjunt[0].id,1.0f) * colorTexture;
+
     colorOut = vec4(material.ka * conjunt[0].ia +
-            material.kd * lambertian * conjunt[0].id +
+            diffuse +
             material.ks * specular * conjunt[0].is, 1.0);
 }
 
