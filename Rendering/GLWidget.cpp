@@ -204,6 +204,8 @@ void GLWidget::activaToonShader() {
 
 void GLWidget::activaPhongTex() {
     //A implementar a la fase 1 de la practica 2
+    initShader("://resources/vshaderPhongTexture.glsl", "://resources/fshaderPhongTexture.glsl");
+    updateShaderTexture();
     qDebug()<<"Estic a Phong Tex";
 }
 
@@ -241,8 +243,14 @@ void GLWidget::updateShader(){
 //Metode per canviar de shaders de textures
 void GLWidget::updateShaderTexture(){
     //A implementar a la fase 1 de la practica 2
-    scene->toGPU(program);
+    scene->lightsToGPU(program);
+    scene->setAmbientGlobalToGPU(program);
     scene->camera->toGPU(program);
+    for(unsigned int i=0; i < scene->objects.size(); i++){
+        scene->objects.at(i)->make();
+        scene->objects.at(i)->toGPU(program);
+        scene->objects.at(i)->toGPUTexture(program);
+    }
 
     updateGL();
 

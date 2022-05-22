@@ -46,6 +46,6 @@ private:
 
     GLuint buffer;
 
-
+};
 #endif // PLANE_H
 

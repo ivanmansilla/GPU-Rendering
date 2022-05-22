@@ -15,6 +15,6 @@
         <file>resources/fshaderToon.glsl</file>
         <file>resources/vshaderToon.glsl</file>
         <file>resources/fshaderPhongTexture.glsl</file>
-        <file>resources/vshaderPhongTextures.glsl</file>
+        <file>resources/vshaderPhongTexture.glsl</file>
     </qresource>
 </RCC>

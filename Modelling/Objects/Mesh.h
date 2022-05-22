@@ -23,6 +23,7 @@ using namespace Common;
 #include <Modelling/Materials/Material.h>
 
 typedef vec4  point4;
+typedef vec2  point2;
 
 // Classe que conte la representacio d'un Objecte: geometria, topologia, material i textures
 class Mesh : public QObject, public Animable {
@@ -42,6 +43,7 @@ protected:
     int     numPoints;
     point4 *points;
     point4 *normals;
+    point2 *textVs;
 
     // Els colors s'usen en la primera execució però després son prescindibles
     point4 *colors;

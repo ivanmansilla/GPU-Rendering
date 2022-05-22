@@ -1,5 +1,7 @@
 #include "Plane.h"
 
+
+
 Plane::Plane()
 {
     qDebug() << "Estic en el constructor del cub\n";
@@ -28,7 +30,6 @@ Plane::Plane()
     vertex_colors[5] =    color4( 1.0, 0.0, 1.0, 1.0 );  // magenta
     vertex_colors[6] =    color4( 1.0, 1.0, 1.0, 1.0 );  // white
     vertex_colors[7] =    color4( 0.0, 1.0, 1.0, 1.0 );  // cyan
-
 }
 
 // Constructora amb tots els parametres
@@ -130,3 +131,4 @@ void Plane::aplicaTG(mat4 m)
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 }
+

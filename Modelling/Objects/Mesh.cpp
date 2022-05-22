@@ -11,6 +11,7 @@ Mesh::Mesh(int npoints, QObject *parent) : QObject(parent){
     points = new point4[numPoints];
     normals= new point4[numPoints];
     colors = new point4[numPoints];
+    textVs = new point2[numPoints];
 
  }
 
@@ -23,6 +24,7 @@ Mesh::Mesh(int npoints, QString n) : numPoints(npoints){
     points = new point4[numPoints];
     normals= new point4[numPoints];
     colors = new point4[numPoints];
+    textVs = new point2[numPoints];
     material = Material();
 
     parseObjFile(n);
@@ -37,6 +39,7 @@ Mesh::~Mesh(){
     delete points;
     delete normals;
     delete colors;
+    delete textVs;
 }
 
 /**
@@ -81,7 +84,6 @@ void Mesh::toGPU(shared_ptr<QGLShaderProgram> pr) {
 
     glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(point4)*Index));
     glEnableVertexAttribArray(2);
-    toGPUTexture(program);
 }
 
 
@@ -96,7 +98,6 @@ void Mesh::draw(){
     // TO  DO: A modificar a la fase 1 de la practica 2
     // Cal activar també les normals  a la GPU
 
-    drawTexture();
     material.toGPU(program);
     glBindVertexArray( vao );
     glEnableVertexAttribArray(0);
@@ -157,6 +158,10 @@ void Mesh::make(){
             points[Index] = vertexs[cares[i].idxVertices[j]];
             colors[Index] = vec4(base_colors[j%4], 1.0);
             normals[Index] = normalsVertexs[cares[i].idxNormals[j]];
+            if(textVertexs.size() > 0){
+                textVs[Index] = textVertexs[cares[i].idxTextures[j]];
+                cout << textVs << endl;
+            }
             Index++;
         }
     }
@@ -179,9 +184,11 @@ void Mesh::initTexture()
     // TO DO: A implementar a la fase 1 de la practica 2
     // Cal inicialitzar la textura de l'objecte: veure l'exemple del CubGPUTextura
     qDebug() << "Initializing textures...";
+   //shared_ptr<QOpenGLTexture> textFile = make_shared<QOpenGLTexture>(QOpenGLTexture(QImage("://resources/textures/bricks.png")));
 
     if(texture== nullptr){
-        texture = new QOpenGLTexture(QImage("://resources/textures/bricks.png"));
+       // texture = textFile;
+        return;
     }
 
     glActiveTexture(GL_TEXTURE0);
@@ -190,12 +197,6 @@ void Mesh::initTexture()
     texture->setMinificationFilter(QOpenGLTexture::Linear);
 
     texture->bind(0);
-
-    texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
-    texture->setMagnificationFilter(QOpenGLTexture::Linear);
-
-    texture->bind(0);
-
  }
 
 
@@ -314,16 +315,24 @@ void Mesh::aplicaTG(shared_ptr<TG> tg){
 
 void Mesh::drawTexture(){
     initTexture();
-    program->setUniformValue("textMap",0);
+    draw();
+    glEnableVertexAttribArray(3);
+    glDisableVertexAttribArray(3);
+
 }
 
 
 void Mesh::toGPUTexture(shared_ptr<QGLShaderProgram> program){
     qDebug() << "mesh to gpu texture\n";
+    texture->bind(0);
+    program->setUniformValue("textMap",0);
+
+    glBufferSubData( GL_ARRAY_BUFFER, sizeof(points)+sizeof(colors), sizeof(textVs), textVs );
+    glVertexAttribPointer(3, 4, GL_FLOAT, GL_FALSE, 0, (void*)((sizeof(points)+sizeof(colors))*Index));
+    glEnableVertexAttribArray(3);
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_TEXTURE_2D);
-
 }
 
 void Mesh::setMaterial(Material material){
