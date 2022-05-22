@@ -8,7 +8,7 @@ Light::Light(LightType t) {
     ia = vec3(0,1,0);
     id = vec3(1,1,1);
     is = vec3(0,1,0);
-    coef = vec3(0,0,1);
+    coef = vec3(0.5,0,0.01);
     lightPosition = vec4(-25,25,25,1.0);
     tipus = t;
 }

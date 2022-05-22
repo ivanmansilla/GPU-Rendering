@@ -183,6 +183,8 @@ void GLWidget::activaDepthShader() {
 
 void GLWidget::activaGouraudShader() {
     //A implementar a la fase 1 de la practica 2
+    initShader("://resources/vshaderGouraud.glsl", "://resources/fshaderGouraud.glsl");
+    updateShader();
     qDebug()<<"Estic a Gouraud";
 
 }

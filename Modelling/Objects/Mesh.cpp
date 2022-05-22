@@ -305,7 +305,7 @@ void Mesh::drawTexture(){
 }
 
 
-void Mesh::toGPUTexture(QGLShaderProgram *program){
+void Mesh::toGPUTexture(shared_ptr<QGLShaderProgram> program){
     qDebug() << "mesh to gpu texture\n";
 
     glEnable(GL_DEPTH_TEST);

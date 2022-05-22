@@ -65,7 +65,7 @@ public:
 
     virtual void make();
     virtual void toGPU(shared_ptr<QGLShaderProgram> p);
-    void toGPUTexture(QGLShaderProgram *program);
+    void toGPUTexture(shared_ptr<QGLShaderProgram> program);
     virtual void draw();
 
     void setMaterial(Material material);

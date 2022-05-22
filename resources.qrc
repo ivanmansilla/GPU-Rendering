@@ -10,5 +10,7 @@
         <file>resources/vshaderDepthShading.glsl</file>
         <file>resources/fshaderPhong.glsl</file>
         <file>resources/vshaderPhong.glsl</file>
+        <file>resources/vshaderGouraud.glsl</file>
+        <file>resources/fshaderGouraud.glsl</file>
     </qresource>
 </RCC>

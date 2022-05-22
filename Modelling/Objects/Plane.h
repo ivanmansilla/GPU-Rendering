@@ -45,8 +45,7 @@ private:
     color4 colors[NumVertices]; // colors en aquests punts
 
     GLuint buffer;
-
-};
+    Material material;};
 
 
 #endif // PLANE_H
