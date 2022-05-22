@@ -54,9 +54,15 @@ void SceneFactoryVirtual::read(const QJsonObject &json)
             if (meshObj.contains("objFileName") && meshObj["objFileName"].isString()) {
                 QString fileName = meshObj["objFileName"].toString();
                 // Creem la Mesh
-                shared_ptr<Mesh> mesh = make_shared<Mesh>(100000, fileName); // ¿3? Preguntar
+                shared_ptr<Mesh> mesh = make_shared<Mesh>(100000, fileName);
 
-                // TODO: Llegir material
+                Material material;
+                if (meshObj.contains("material") && meshObj["material"].isObject()) {
+                    QJsonObject materialObj = meshObj["material"].toObject();
+                    material.read(materialObj);
+                }
+
+                mesh->setMaterial(material);
 
                 // Afegim la Mesh
                 scene->addObject(mesh);

@@ -522,6 +522,7 @@ qrc_resources.cpp: resources.qrc \
 		/usr/lib/qt5/bin/rcc \
 		resources/fshader1.glsl \
 		resources/vshaderDepthShading.glsl \
+		resources/vshaderToon.glsl \
 		resources/teapot2.obj \
 		resources/f16.obj \
 		resources/cube.obj \
@@ -531,7 +532,8 @@ qrc_resources.cpp: resources.qrc \
 		resources/meshExample.json \
 		resources/fshaderPhong.glsl \
 		resources/vshaderGouraud.glsl \
-		resources/vshader1.glsl
+		resources/vshader1.glsl \
+		resources/fshaderToon.glsl
 	/usr/lib/qt5/bin/rcc -name resources resources.qrc -o qrc_resources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h

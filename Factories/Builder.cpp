@@ -39,7 +39,8 @@ void Builder::newVirtualScene() {
         auto factory = AbstractFactoryScenes::getInstance().getSceneFactory(format, fileName);
         // Creem l'escena
         scene = factory->createScene(format, fileName);
-
+        auto l = make_shared<Light>(Puntual);
+        scene->addLight(l);
     }
 
     emit newScene(scene);
