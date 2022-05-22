@@ -66,6 +66,7 @@ SHADING:
 Primerament hem implementat el Depth Shading. Aquest shader només necessita la distància del vèrtex a la càmera, i per això hem fet servir el gl_FragCoord.z, que és la distància demanada. Per a que es veiés en intensitats segons la distància, hem hagut de calcular la intensitat del color segons la distància fent que aquest sigués el color del píxel.
 Després hem calculat el Gouraud Shading. En aquest cas havíem de calcular les normals dels vèrtexs per més tard calcular el color. En la lectura dels objectes, hem llegit els vèrtexs i les normals passant-los directament al vèrtex shader. Dins del vèrtex shader hem calculat el color del píxel fent el Blinn Phong, i aquest color és el que li passem al fragment shader per a que mostri el color del píxel.
 A continuació hem fet el Phong Shading. Aquest és molt semblant al Gouraud però en comptes de calcular el Blinn Phong dins del vèrtex ho hem fet en el fragment shader.
+I per finalitzar la part de shading, el qual no ha suposat grans problemes després de fer Phong i Gouraud. Simplement era fer uns quants if's on segons el prodcucte escalar de la normal i la direccio de la llum posem un valor més o menys fosc de la id. La direcció de la llum, al no tenir llums direccionals, la agafem com a la L.
 
 TEXTURES:
 
