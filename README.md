@@ -29,7 +29,7 @@ Dit això, hem passat a crear els shaders demanats comprovant que funcionen tant
     - Shading
         - [X] Depth - Jordi Bujaldon
         - [X] Phong - Jordi Bujaldon
-        - [X] Gouraud - luc Slatosch
+        - [X] Gouraud - Lluc Slatosch
         - [X] Toon-shading - Lluc Slatosch
     - Textures
         - [X] Textura com material en un objecte -  Miriam Martínez
@@ -60,6 +60,12 @@ En aquesta part, primer hem creat la classe AbstractFactoryScenes encarregada de
 ESCENES DE DADES REALS:
 
 LLUMS:
+No va suposar grans problemes implementar la laprt de llums. Pràcticament tot el necessari apareixia a l'enunciat. Al principi no sabia com canviar els valors desde la mainWindow. Havia de passar les llums a la GPU cada cop que el MainWindow crida al mètode setLights del GLWidget, és a dir, posar el lightsToGPU a setLights.
+La llum ambient global era pràcticament el mateix, i la direccional la vaig deixar per més endavant, pero finalment no he tingut temps d'implementarla, ja que tampoc l'hi teniem a la P1. Els shaders estàn implementats com per funcionar amb una sola llum, ja que no hem pogut afegir-ne més a la MainWindow. Encara així, per al shader bàsic,
+si construím fins a 5 llums, les interpretarà bé i podrà treure el color de qualsevol de les Id(per exemple). Veure captura de pantalla on apareix el cub turquesa fosc, la llum 1(modificable) té els seus valors Id a 0, i les altres dues tenen per defecte verd i blau. Treiem la suma de les 3 id com a color i es veu el turquesa.
+S'han modificat els valors per defecte de la MainWindow, ja que apareixia en un verd extrany.
+
+
 
 SHADING:
 Primerament hem implementat el Depth Shading. Aquest shader només necessita la distància del vèrtex a la càmera, i per això hem fet servir el gl_FragCoord.z, que és la distància demanada. Per a que es veiés en intensitats segons la distància, hem hagut de calcular la intensitat del color segons la distància fent que aquest sigués el color del píxel.

@@ -640,21 +640,21 @@ public:
         lightIa1Spin = new QDoubleSpinBox(diffuseLightTab);
         lightIa1Spin->setObjectName(QString::fromUtf8("lightIa1Spin"));
         lightIa1Spin->setSingleStep(0.100000000000000);
-        lightIa1Spin->setValue(0.000000000000000);
+        lightIa1Spin->setValue(0.300000000000000);
 
         horizontalLayout_14->addWidget(lightIa1Spin);
 
         lightIa2Spin = new QDoubleSpinBox(diffuseLightTab);
         lightIa2Spin->setObjectName(QString::fromUtf8("lightIa2Spin"));
         lightIa2Spin->setSingleStep(0.100000000000000);
-        lightIa2Spin->setValue(1.000000000000000);
+        lightIa2Spin->setValue(0.300000000000000);
 
         horizontalLayout_14->addWidget(lightIa2Spin);
 
         lightIa3Spin = new QDoubleSpinBox(diffuseLightTab);
         lightIa3Spin->setObjectName(QString::fromUtf8("lightIa3Spin"));
         lightIa3Spin->setSingleStep(0.100000000000000);
-        lightIa3Spin->setValue(0.000000000000000);
+        lightIa3Spin->setValue(0.300000000000000);
 
         horizontalLayout_14->addWidget(lightIa3Spin);
 
@@ -674,21 +674,21 @@ public:
         lightIs1Spin = new QDoubleSpinBox(diffuseLightTab);
         lightIs1Spin->setObjectName(QString::fromUtf8("lightIs1Spin"));
         lightIs1Spin->setSingleStep(0.100000000000000);
-        lightIs1Spin->setValue(0.000000000000000);
+        lightIs1Spin->setValue(0.700000000000000);
 
         horizontalLayout_41->addWidget(lightIs1Spin);
 
         lightIs2Spin = new QDoubleSpinBox(diffuseLightTab);
         lightIs2Spin->setObjectName(QString::fromUtf8("lightIs2Spin"));
         lightIs2Spin->setSingleStep(0.100000000000000);
-        lightIs2Spin->setValue(1.000000000000000);
+        lightIs2Spin->setValue(0.700000000000000);
 
         horizontalLayout_41->addWidget(lightIs2Spin);
 
         lightIs3Spin = new QDoubleSpinBox(diffuseLightTab);
         lightIs3Spin->setObjectName(QString::fromUtf8("lightIs3Spin"));
         lightIs3Spin->setSingleStep(0.100000000000000);
-        lightIs3Spin->setValue(0.000000000000000);
+        lightIs3Spin->setValue(0.700000000000000);
 
         horizontalLayout_41->addWidget(lightIs3Spin);
 
@@ -722,7 +722,7 @@ public:
         lightCoefC = new QDoubleSpinBox(diffuseLightTab);
         lightCoefC->setObjectName(QString::fromUtf8("lightCoefC"));
         lightCoefC->setSingleStep(0.100000000000000);
-        lightCoefC->setValue(1.000000000000000);
+        lightCoefC->setValue(0.000000000000000);
 
         horizontalLayout_42->addWidget(lightCoefC);
 
