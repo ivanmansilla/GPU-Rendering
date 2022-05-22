@@ -9,6 +9,8 @@
 
 #include <stdio.h>
 
+#include <Modelling/Materials/Material.h>
+
 
 const int NumVertices = 6; //(1 faces)(2 triangles/face)(3 vertices/triangle)
 

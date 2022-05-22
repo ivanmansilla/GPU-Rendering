@@ -65,7 +65,10 @@ public:
 
     virtual void make();
     virtual void toGPU(shared_ptr<QGLShaderProgram> p);
+    void toGPUTexture(QGLShaderProgram *program);
     virtual void draw();
+
+    void setMaterial(Material material);
 
     Capsa3D calculCapsa3D();
 
@@ -75,6 +78,7 @@ public:
 
 private:
     void initTexture();
+    void drawTexture();
     Material material;
 };
 

@@ -28,6 +28,8 @@ Plane::Plane()
     vertex_colors[5] =    color4( 1.0, 0.0, 1.0, 1.0 );  // magenta
     vertex_colors[6] =    color4( 1.0, 1.0, 1.0, 1.0 );  // white
     vertex_colors[7] =    color4( 0.0, 1.0, 1.0, 1.0 );  // cyan
+
+    material=Material();
 }
 
 // Constructora amb tots els parametres
@@ -40,6 +42,7 @@ Plane::Plane(int an, int al, int profu, const GLfloat x0, GLfloat y0, GLfloat z0
     xorig = x0;
     yorig = y0;
     zorig = z0;
+    material=Material();
 }
 
 // Destructora

@@ -80,6 +80,7 @@ void Mesh::toGPU(shared_ptr<QGLShaderProgram> pr) {
 
     glVertexAttribPointer(2, 4, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(point4)*Index));
     glEnableVertexAttribArray(2);
+    toGPUTexture(program);
 }
 
 
@@ -94,6 +95,7 @@ void Mesh::draw(){
     // TO  DO: A modificar a la fase 1 de la practica 2
     // Cal activar també les normals  a la GPU
 
+    drawTexture();
     material.toGPU(program);
     glBindVertexArray( vao );
     glEnableVertexAttribArray(0);
@@ -174,6 +176,13 @@ void Mesh::initTexture()
     // TO DO: A implementar a la fase 1 de la practica 2
     // Cal inicialitzar la textura de l'objecte: veure l'exemple del CubGPUTextura
     qDebug() << "Initializing textures...";
+
+    glActiveTexture(GL_TEXTURE0);
+
+    texture->setMinificationFilter(QOpenGLTexture::LinearMipMapLinear);
+    texture->setMinificationFilter(QOpenGLTexture::Linear);
+
+    texture->bind(0);
 
  }
 
@@ -288,4 +297,22 @@ Capsa3D Mesh::calculCapsa3D()
 
 void Mesh::aplicaTG(shared_ptr<TG> tg){
 
+}
+
+
+void Mesh::drawTexture(){
+    program->setUniformValue("_texture",0);
+}
+
+
+void Mesh::toGPUTexture(QGLShaderProgram *program){
+    qDebug() << "mesh to gpu texture\n";
+
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_TEXTURE_2D);
+
+}
+
+void Mesh::setMaterial(Material material){
+    this->material=material;
 }
