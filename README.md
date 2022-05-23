@@ -17,7 +17,7 @@ Dit això, hem passat a crear els shaders demanats comprovant que funcionen tant
 
 - Fase 1
     - Adaptació a la lectura de fitxers de dades
-        - [X] bjectesj
+        - [X] Objectes
         - [X] Escenes virtuals - Jordi Bujaldon
         - [X] Escenes de dades Reals - Ivan Mansilla
     - Material
@@ -69,6 +69,15 @@ A continuació hem fet el Phong Shading. Aquest és molt semblant al Gouraud per
 I per finalitzar la part de shading, el qual no ha suposat grans problemes després de fer Phong i Gouraud. Simplement era fer uns quants if's on segons el prodcucte escalar de la normal i la direccio de la llum posem un valor més o menys fosc de la id. La direcció de la llum, al no tenir llums direccionals, la agafem com a la L.
 
 TEXTURES:
+Primer hem implementat els mètodes initTexture, drawTexture, toGPUTexture i hem modificat de la classe mesh.
+- initTexture: on carreguem la textura
+- drawTexture: tornem a carregar la textura i realitzem el draw del objecte
+- toGPUTexture: on s'activa la textura i es passa a la gpu, on fem la transferencia de les coordenades de textura al vertex buffer i finalment fem el set up d'aquest.
+- modificació make: carreguem els vèrtexs de les textures
+Després hem modificat el mètode updateShaderTexture de la classe GLWidget on recorrem els objectes i carreguem la textura seleccionada i finalment hem creat fshaderPhongTexture i el vshaderPhongTexture
+
+ANIMACIONS:
+S'ha afegit un nou mètode oneSphere a la classe SceneFactoryVirtual per afegir una animació a l'esfera per a traslladar-la (0.2, 0.2, 0.2) a cada frame, a continuació hem cridat aquest mètode en la classe Builder i hem actualitza't la càmera. Malauradament, aquesta implementació no s'ha pogut provar, ja que faltava una part de la implementació d'escenes de dades.
 
 **Screenshots**
 
@@ -103,8 +112,4 @@ Gouraud:
 
 **Additional Information**
 
-
-Un dels principals problemes que hem tingut ha estat el temps de dedicació a la pràctica degut a la càrrega de feina que ha hagut en l'últim mes. A més, hem tingut molts problemes en la part de l'escena de dades reals. Ja que encara    que al principi semblaba que nomès haviem de migrar el codi, vam haver de tocar bastant i van sorgir varis inconvenients, com ara quan creavem un "plane", ja que abans estava la classe Objecte i teniem un array d'objectes on es trobaven el planol o els diferents tipus d'objectes, pero ara nomès teniem la Mesh, aquest problema el varem solucionar creant un plane com si fos un altre tipus d'objecte a part de la mesh, encara que el pla estaria format per mesh. Tot i això vam aconseguir acabar pràcticament tot la sense més gaires problemes, fins arribar a l'hora de fer les proves entation fault en una part del codi que vam migrar de la practica 1 i en principi no donaria problemes, pero per falta de temps com ja hem comentat no hem pogut indagar molt o tant com ens hagues agradat per trobar l'error, així que encara que en principi a priori esta tot el codi per tal de que funciones, falta arreglar un petit error per tal de fer les proves necessaries.
-
-
-
+Un dels principals problemes que hem tingut ha estat el temps de dedicació a la pràctica degut a la càrrega de feina que ha hagut en l'últim mes. A més, hem tingut molts problemes en la part de l'escena de dades reals.
