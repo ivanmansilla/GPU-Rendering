@@ -17,7 +17,7 @@ Dit això, hem passat a crear els shaders demanats comprovant que funcionen tant
 
 - Fase 1
     - Adaptació a la lectura de fitxers de dades
-        - [X] Objectes
+        - [X] bjectesj
         - [X] Escenes virtuals - Jordi Bujaldon
         - [X] Escenes de dades Reals - Ivan Mansilla
     - Material
@@ -103,4 +103,8 @@ Gouraud:
 
 **Additional Information**
 
-Un dels principals problemes que hem tingut ha estat el temps de dedicació a la pràctica degut a la càrrega de feina que ha hagut en l'últim mes. A més, hem tingut molts problemes en la part de l'escena de dades reals.
+
+Un dels principals problemes que hem tingut ha estat el temps de dedicació a la pràctica degut a la càrrega de feina que ha hagut en l'últim mes. A més, hem tingut molts problemes en la part de l'escena de dades reals. Ja que encara    que al principi semblaba que nomès haviem de migrar el codi, vam haver de tocar bastant i van sorgir varis inconvenients, com ara quan creavem un "plane", ja que abans estava la classe Objecte i teniem un array d'objectes on es trobaven el planol o els diferents tipus d'objectes, pero ara nomès teniem la Mesh, aquest problema el varem solucionar creant un plane com si fos un altre tipus d'objecte a part de la mesh, encara que el pla estaria format per mesh. Tot i això vam aconseguir acabar pràcticament tot la sense més gaires problemes, fins arribar a l'hora de fer les proves entation fault en una part del codi que vam migrar de la practica 1 i en principi no donaria problemes, pero per falta de temps com ja hem comentat no hem pogut indagar molt o tant com ens hagues agradat per trobar l'error, així que encara que en principi a priori esta tot el codi per tal de que funciones, falta arreglar un petit error per tal de fer les proves necessaries.
+
+
+
