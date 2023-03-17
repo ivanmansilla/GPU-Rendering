@@ -1,53 +1,11 @@
 # RenderGPU
 Segona pràctica de GiVD 2021-22
-
-::
-
-    Aquest és el model base del README.rst que huarue d'omplir com a documentació de la pràctica. De cara a ala presentació d'qeust document, si us plau, esborreu les notes i aquest text. 
     
 **Abstract**
 
 En aquest pràctica hem fet primerament la migració de les dades reals i virtuals traspasant les classes corresponents a la creació d'objectes, i lectura de fitxers. Mentres feiem aquesta feina, a l'hora també creàvem les llums i materials per separat, comprovant que funcionés de manera correcte. Un cop tot funcional ho hem juntat creant les llums i materials dins de les classes que creen les escenes virtuals i reals. 
 
 Dit això, hem passat a crear els shaders demanats comprovant que funcionen tant per la lectura d'objectes com d'escenes, passant les dades entre CPU i GPU i activant-los en temps d'execució. I per finalitzar, hem implementat les textures pels objectes llegint els seus téxels i mostrant-los en el propi objecte.
-
-**Features**
-
-*(NOTA: Quines parts heu desenvolupat i qui ho ha fet de l'equip. Editeu la llista que teniu a continuació afegint darrera de cada punt, la persona que ha treballat en aquell punt.) *
-
-- Fase 1
-    - Adaptació a la lectura de fitxers de dades
-        - [X] Objectes
-        - [X] Escenes virtuals - Jordi Bujaldon
-        - [X] Escenes de dades Reals - Ivan Mansilla
-    - Material
-    - Light
-        - [X] Puntual - Lluc Slatosch
-        - [ ] Direccional
-        - [ ] Spotlight
-        - [X] Ambient Global - Lluc Slatosch
-    - Shading
-        - [X] Depth - Jordi Bujaldon
-        - [X] Phong - Lluc Slatosch
-        - [X] Gouraud - Jordi Bujaldón
-        - [X] Toon-shading - Lluc Slatosch
-    - Textures
-        - [X] Textura com material en un objecte -  Miriam Martínez
-        - [ ] Textura al pla base
-        
-
-- Fase 2 
-    - [ ] Èmfasi de siluetes
-    - [ ] Mapping indirecte de textures
-    - [X] Animacions amb dades temporals - Miriam Martinez
-    - [ ] Normal mapping
-    - [ ] Entorn amb textures
-    - [ ] Reflexions
-    - [ ] Transparències via objectes.
-    - [ ] Transparències via environmental mapping.
-
-
-**Extensions**
 
 **Memòria**
 
